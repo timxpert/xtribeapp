@@ -35,11 +35,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Form & Input Interactivity
     // ==========================================
     
-    // Multi-Select Choice Chips
-    document.querySelectorAll('.choice-chips .chip').forEach(chip => {
-        chip.addEventListener('click', (e) => {
-            e.preventDefault();
-            chip.classList.toggle('active');
+    // Choice Chips (Single and Multi Select)
+    document.querySelectorAll('.choice-chips').forEach(group => {
+        const isSingle = group.classList.contains('single-select');
+        group.querySelectorAll('.chip').forEach(chip => {
+            chip.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (isSingle) {
+                    group.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                } else {
+                    chip.classList.toggle('active');
+                }
+            });
         });
     });
 
@@ -257,7 +265,8 @@ You MUST return a valid JSON object only. The JSON must follow this exact struct
             payload = {
                 product: document.getElementById('q-product')?.value || '',
                 goal: document.getElementById('q-goal')?.value || '',
-                platforms: Array.from(document.querySelectorAll('.choice-chips .chip.active')).map(c => c.innerText).join(', '),
+                videoType: document.querySelector('#q-video-type .chip.active')?.innerText.trim() || '',
+                platforms: Array.from(document.querySelectorAll('#q-platforms .chip.active')).map(c => c.innerText).join(', ') || Array.from(document.querySelectorAll('#view-quick .choice-chips:not(.single-select):not(.brand-tones) .chip.active')).map(c => c.innerText).join(', '),
                 url: document.getElementById('q-url')?.value || '',
                 audience: document.getElementById('q-brand-audience')?.value || '',
                 message: document.getElementById('q-brand-message')?.value || '',
@@ -272,7 +281,8 @@ You MUST return a valid JSON object only. The JSON must follow this exact struct
             payload = {
                 product: document.getElementById('w-product')?.value || '',
                 goal: document.getElementById('w-goal')?.value || '',
-                platforms: Array.from(document.querySelectorAll('#view-wizard .choice-chips .chip.active')).map(c => c.innerText).join(', '),
+                videoType: document.querySelector('#w-video-type .chip.active')?.innerText.trim() || '',
+                platforms: Array.from(document.querySelectorAll('#w-platforms .chip.active')).map(c => c.innerText).join(', ') || Array.from(document.querySelectorAll('#view-wizard .choice-chips:not(.single-select):not(.brand-tones) .chip.active')).map(c => c.innerText).join(', '),
                 url: '',
                 audience: document.getElementById('w-target-audience')?.value || '',
                 message: document.getElementById('w-brand-message')?.value || '',
@@ -289,10 +299,13 @@ You MUST return a valid JSON object only. The JSON must follow this exact struct
 
 You are generating a completely unique, tailor-made video strategy for this specific brand. Never produce generic output. Every word must reflect the brand's voice, audience, pain points, and goals.
 
+The entire strategy, script, scene breakdown, visual direction, and hook variations must be specifically crafted for a ${payload.videoType || 'video'} format. The pacing, tone, structure, camera direction, and editing style must all match what works best for this video type. Never produce a generic script — every output must feel native to the selected video format.
+
 Here is everything you know about this brand:
 - Product/Service: ${payload.product || 'N/A'}
 - Target Audience: ${payload.audience || 'N/A'}
 - Primary Goal: ${payload.goal || 'N/A'}
+- Video Type: ${payload.videoType || 'N/A'}
 - Target Platform: ${payload.platforms || 'N/A'}
 - Key Message: ${payload.message || 'N/A'}
 - Core Benefits: ${payload.benefits || 'N/A'}

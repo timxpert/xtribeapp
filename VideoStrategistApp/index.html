@@ -107,8 +107,25 @@
                             style="display: none; margin-top: 10px;">
                     </div>
                     <div class="input-group">
+                        <label>Video Type</label>
+                        <div class="choice-chips single-select card-chips" id="q-video-type">
+                            <button class="chip active"><ion-icon name="videocam-outline"></ion-icon> <span>UGC Ad</span></button>
+                            <button class="chip"><ion-icon name="person-outline"></ion-icon> <span>Talking Head</span></button>
+                            <button class="chip"><ion-icon name="eye-off-outline"></ion-icon> <span>Faceless Video</span></button>
+                            <button class="chip"><ion-icon name="color-wand-outline"></ion-icon> <span>Motion Graphics</span></button>
+                            <button class="chip"><ion-icon name="laptop-outline"></ion-icon> <span>SaaS / Product Demo</span></button>
+                            <button class="chip"><ion-icon name="hardware-chip-outline"></ion-icon> <span>AI Generated Video</span></button>
+                            <button class="chip"><ion-icon name="tv-outline"></ion-icon> <span>Commercial Ad</span></button>
+                            <button class="chip"><ion-icon name="logo-youtube"></ion-icon> <span>YouTube Video</span></button>
+                            <button class="chip"><ion-icon name="logo-tiktok"></ion-icon> <span>TikTok / Reels / Shorts</span></button>
+                            <button class="chip"><ion-icon name="film-outline"></ion-icon> <span>Documentary Style</span></button>
+                            <button class="chip"><ion-icon name="chatbubbles-outline"></ion-icon> <span>Testimonial</span></button>
+                            <button class="chip"><ion-icon name="bulb-outline"></ion-icon> <span>Explainer Video</span></button>
+                        </div>
+                    </div>
+                    <div class="input-group">
                         <label>Target Platform (Select Multiple)</label>
-                        <div class="choice-chips">
+                        <div class="choice-chips" id="q-platforms">
                             <button class="chip active">TikTok</button>
                             <button class="chip">Instagram</button>
                             <button class="chip">YouTube</button>
@@ -366,11 +383,28 @@
                                     <ion-icon name="chevron-down" class="select-chevron"></ion-icon>
                                 </div>
                             </div>
+                            <div class="input-group mt-2">
+                                <label>Video Type</label>
+                                <div class="choice-chips single-select card-chips" id="w-video-type">
+                                    <button class="chip active"><ion-icon name="videocam-outline"></ion-icon> <span>UGC Ad</span></button>
+                                    <button class="chip"><ion-icon name="person-outline"></ion-icon> <span>Talking Head</span></button>
+                                    <button class="chip"><ion-icon name="eye-off-outline"></ion-icon> <span>Faceless Video</span></button>
+                                    <button class="chip"><ion-icon name="color-wand-outline"></ion-icon> <span>Motion Graphics</span></button>
+                                    <button class="chip"><ion-icon name="laptop-outline"></ion-icon> <span>SaaS / Product Demo</span></button>
+                                    <button class="chip"><ion-icon name="hardware-chip-outline"></ion-icon> <span>AI Generated Video</span></button>
+                                    <button class="chip"><ion-icon name="tv-outline"></ion-icon> <span>Commercial Ad</span></button>
+                                    <button class="chip"><ion-icon name="logo-youtube"></ion-icon> <span>YouTube Video</span></button>
+                                    <button class="chip"><ion-icon name="logo-tiktok"></ion-icon> <span>TikTok / Reels / Shorts</span></button>
+                                    <button class="chip"><ion-icon name="film-outline"></ion-icon> <span>Documentary Style</span></button>
+                                    <button class="chip"><ion-icon name="chatbubbles-outline"></ion-icon> <span>Testimonial</span></button>
+                                    <button class="chip"><ion-icon name="bulb-outline"></ion-icon> <span>Explainer Video</span></button>
+                                </div>
+                            </div>
                         </div>
                         <!-- Step 2 -->
                         <div class="wizard-step" data-step="2">
                             <h2>Which platforms?</h2>
-                            <div class="choice-chips massive-chips">
+                            <div class="choice-chips massive-chips" id="w-platforms">
                                 <button class="chip active">TikTok</button>
                                 <button class="chip">Instagram</button>
                                 <button class="chip">YouTube</button>
