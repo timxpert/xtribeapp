@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>The Strategist</title>
+    <!-- Preload Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <div id="app" class="mobile-app-shell">
+
+        <!-- Header -->
+        <header class="app-header glass-effect">
+            <div class="logo interactive-hitbox" data-navigate="view-home">
+                <div class="logo-icon">
+                    <ion-icon name="flash"></ion-icon>
+                </div>
+                <span>The Strategist</span>
+            </div>
+            <button class="icon-btn interactive-hitbox" id="btn-settings" aria-label="Settings"
+                data-navigate="view-settings">
+                <ion-icon name="ellipsis-horizontal"></ion-icon>
+            </button>
+        </header>
+
+        <!-- Dynamic Viewport -->
+        <main id="viewport" class="viewport">
+
+
+            <!-- VIEW: Home Dashboard -->
+            <section id="view-home" class="view active">
+                <div class="home-greeting hero-greeting">
+                    <h1 style="margin-top:20px;">The brain behind<br><span style="color: var(--accent-primary); background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">high-converting</span><br>video.</h1>
+                    <p class="subtitle mt-2" style="font-size: 1.1rem; line-height: 1.5; color: var(--text-secondary);">Generate battle-tested scripts, motion direction, and ad structures instantly.</p>
+                </div>
+
+                <div class="action-grid mt-2">
+                    <div class="card premium-card interactive-hitbox" data-navigate="view-quick">
+                        <div class="card-icon-wrapper gradient-bg-1"><ion-icon name="flash"></ion-icon></div>
+                        <div class="card-content">
+                            <h3>Generate working strategy</h3>
+                            <p>Create a full blown strategy for your projects.</p>
+                        </div>
+                        <ion-icon name="chevron-forward" class="arrow-icon"></ion-icon>
+                    </div>
+                    
+                    <div class="card premium-card interactive-hitbox" data-navigate="view-tester">
+                        <div class="card-icon-wrapper gradient-bg-3" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(249, 115, 22, 0.2)); color: #EF4444;"><ion-icon name="locate"></ion-icon></div>
+                        <div class="card-content">
+                            <h3>Conversion Tester</h3>
+                            <p>Test how hard your script will convert</p>
+                        </div>
+                        <ion-icon name="chevron-forward" class="arrow-icon"></ion-icon>
+                    </div>
+                </div>
+
+                <!-- Bottom Recent Projects -->
+                <div id="home-recent-projects" style="margin-top: 24px;">
+                    <!-- JS injects cards directly, no headers -->
+                </div>
+            </section>
+
+            <!-- VIEW: Quick Generate -->
+            <section id="view-quick" class="view form-view">
+                <div class="subheader scroll-sticky">
+                    <button class="back-btn interactive-hitbox" data-navigate="view-home"><ion-icon
+                            name="arrow-back"></ion-icon> Back</button>
+                    <h2>Generate Strategy</h2>
+                    <div style="width: 60px;"></div>
+                </div>
+                <div class="form-container">
+                    <div class="input-group">
+                        <label for="q-product">What are you promoting?</label>
+                        <textarea id="q-product" rows="4"
+                            placeholder="e.g. A SaaS app that helps motion designers track freelance invoices and payments..."></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>Primary Goal</label>
+                        <div class="custom-select-wrapper">
+                            <ion-icon name="analytics-outline" class="select-icon"></ion-icon>
+                            <select id="q-goal">
+                                <option>Drive Sales</option>
+                                <option>Book a Demo</option>
+                                <option>Brand Awareness</option>
+                                <option>Explain your product/service</option>
+                                <option>Generate Leads</option>
+                                <option>App Downloads/Sign Ups</option>
+                                <option>Retarget Existing Customers</option>
+                                <option>Drive Website Traffic</option>
+                                <option>Custom / Other</option>
+                            </select>
+                            <ion-icon name="chevron-down" class="select-chevron"></ion-icon>
+                        </div>
+                        <input type="text" id="q-goal-custom" placeholder="Type your custom goal..."
+                            style="display: none; margin-top: 10px;">
+                    </div>
+                    <div class="input-group">
+                        <label>Target Platform (Select Multiple)</label>
+                        <div class="choice-chips">
+                            <button class="chip active">TikTok</button>
+                            <button class="chip">Instagram</button>
+                            <button class="chip">YouTube</button>
+                            <button class="chip">Facebook</button>
+                            <button class="chip">X (Twitter)</button>
+                            <button class="chip">LinkedIn</button>
+                            <button class="chip">Snapchat</button>
+                            <button class="chip">Pinterest</button>
+                            <button class="chip">Website</button>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="q-url">Website URL <span class="label-hint">(Optional)</span></label>
+                        <div class="custom-input-with-icon">
+                            <ion-icon name="globe-outline" class="input-icon"></ion-icon>
+                            <input type="url" id="q-url" placeholder="Enter your website URL for a better strategy">
+                        </div>
+                        <span class="input-caption">We'll analyse your site to improve the generated strategy.</span>
+                    </div>
+
+                    <!-- Brand Intelligence Collapsible -->
+                    <div class="collapsible-section mt-2 mb-2">
+                        <button class="collapsible-trigger brand-collapse-btn interactive-hitbox" type="button" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; padding: 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); color: white; font-weight: 600;">
+                            <div>
+                                <span style="display: block; font-size: 1.1rem;">Tell Claude About Your Brand</span>
+                                <span style="display: block; font-size: 0.85rem; color: var(--text-secondary); font-weight: 400; margin-top: 4px;">The more context you give, the more powerful your strategy becomes.</span>
+                            </div>
+                            <ion-icon name="add" style="font-size: 1.5rem; color: var(--accent-primary);"></ion-icon>
+                        </button>
+                        <div class="collapsible-content brand-collapse-content" style="padding: 16px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); border-top: none; border-bottom-left-radius: var(--radius-md); border-bottom-right-radius: var(--radius-md); display: none;">
+                            
+                            <div class="input-group">
+                                <label>Target Audience</label>
+                                <input type="text" id="q-brand-audience" placeholder="Who are you trying to reach?">
+                            </div>
+                            
+                            <div class="input-group mt-2">
+                                <label>Key Message</label>
+                                <input type="text" id="q-brand-message" placeholder="e.g. This tool saves you 10 hours a week">
+                            </div>
+                            
+                            <div class="input-group mt-2" id="q-benefits-group">
+                                <label>Core Benefits</label>
+                                <div class="benefit-inputs">
+                                    <input type="text" class="benefit-input mb-1" placeholder="Benefit 1...">
+                                </div>
+                                <button type="button" class="text-btn interactive-hitbox mt-1 add-benefit-btn" style="color: var(--accent-primary); text-align:left;">+ Add benefit</button>
+                            </div>
+                            
+                            <div class="input-group mt-2">
+                                <label>Main Pain Point</label>
+                                <input type="text" id="q-brand-pain" placeholder="e.g. Creators waste hours writing scripts with no strategy">
+                            </div>
+                            
+                            <div class="input-group mt-2">
+                                <label>Unique Selling Point (USP)</label>
+                                <input type="text" id="q-brand-usp" placeholder="e.g. The only tool built specifically for motion designers">
+                            </div>
+                            
+                            <div class="input-group mt-2">
+                                <label>Brand Tone</label>
+                                <div class="choice-chips brand-tones">
+                                    <button class="chip">Emotional</button><button class="chip">Aggressive</button><button class="chip">Funny</button><button class="chip">Premium</button><button class="chip">Inspirational</button><button class="chip">Educational</button><button class="chip">Urgent</button><button class="chip">Conversational</button><button class="chip">Bold</button><button class="chip">Luxury</button><button class="chip">Playful</button><button class="chip">Raw/Authentic</button>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group mt-2">
+                                <label>Competitor or Reference Brand <span class="label-hint">(Optional)</span></label>
+                                <input type="text" id="q-brand-competitor" placeholder="e.g. Apple, Notion, ClickFunnels">
+                            </div>
+                            
+                            <div class="input-group mt-2 mb-2">
+                                <label>Existing Customer Objections <span class="label-hint">(Optional)</span></label>
+                                <input type="text" id="q-brand-objections" placeholder="e.g. It's too expensive, I don't have time to learn a new tool">
+                            </div>
+                        </div>
+                    </div>
+                    <button id="btn-run-quick" class="btn-primary mega-btn interactive-hitbox">
+                        <ion-icon name="sparkles"></ion-icon> Generate Strategy
+                    </button>
+                </div>
+            </section>
+
+
+
+
+            <!-- VIEW: Conversion Tester Form -->
+            <section id="view-tester" class="view form-view">
+                <div class="subheader scroll-sticky">
+                    <button class="back-btn interactive-hitbox" data-navigate="view-home"><ion-icon
+                            name="arrow-back"></ion-icon> Back</button>
+                    <h2>Conversion Tester</h2>
+                    <div style="width: 60px;"></div>
+                </div>
+                
+                <div class="form-container">
+                    <p class="subtitle" style="margin-top: -10px; margin-bottom: 10px;">Paste your script or hook below and our AI will score it for conversion potential.</p>
+                    <div class="input-group">
+                        <textarea id="t-script" rows="8"
+                            placeholder="Paste your script, hook, or ad copy here..."></textarea>
+                    </div>
+                    
+                    <div class="input-group mt-2">
+                        <label>Target Platform</label>
+                        <div class="choice-chips">
+                            <button class="chip active">TikTok</button>
+                            <button class="chip">Instagram</button>
+                            <button class="chip">YouTube</button>
+                            <button class="chip">Facebook</button>
+                            <button class="chip">X</button>
+                            <button class="chip">LinkedIn</button>
+                            <button class="chip">Snapchat</button>
+                            <button class="chip">Pinterest</button>
+                            <button class="chip">Website</button>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group mt-2 mb-2">
+                        <label>Primary Goal</label>
+                        <div class="custom-select-wrapper">
+                            <ion-icon name="analytics-outline" class="select-icon"></ion-icon>
+                            <select id="t-goal">
+                                <option>Drive Sales / Signups</option>
+                                <option>Book a Demo</option>
+                                <option>Brand Awareness</option>
+                                <option>Generate Leads</option>
+                            </select>
+                            <ion-icon name="chevron-down" class="select-chevron"></ion-icon>
+                        </div>
+                    </div>
+                    
+                    <button id="btn-run-tester" class="btn-primary mega-btn interactive-hitbox" style="background: linear-gradient(135deg, #EF4444, #F97316); box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);">
+                        <ion-icon name="flask"></ion-icon> Test My Script
+                    </button>
+                </div>
+            </section>
+            
+            <!-- VIEW: Conversion Tester Output -->
+            <section id="view-tester-output" class="view form-view">
+                <div class="subheader scroll-sticky">
+                    <button class="back-btn interactive-hitbox" data-navigate="view-home"><ion-icon
+                            name="arrow-back"></ion-icon> Home</button>
+                    <h2>Conversion Report</h2>
+                    <div style="width: 60px;"></div>
+                </div>
+                
+                <div class="tester-report-container" style="padding-bottom: 40px;">
+                    <!-- Top Score -->
+                    <div style="text-align: center; margin: 20px 0 30px;">
+                        <h3 style="color: var(--text-secondary); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">Overall Strength</h3>
+                        <div style="font-size: 5rem; font-weight: 800; font-family: var(--font-heading); color: #F59E0B; line-height: 1;" id="test-overall-score">76</div>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-top: 8px;">Solid potential, but needs a sharper hook.</p>
+                    </div>
+                    
+                    <!-- Breakdowns -->
+                    <div class="test-metric-list" style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px;">
+                        <!-- Mock metric 1 -->
+                        <div class="metric-card" style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span style="font-weight: 600;">Hook Strength</span>
+                                <span style="font-weight: 700; color: #EF4444;">42/100</span>
+                            </div>
+                            <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; margin-bottom: 12px;">
+                                <div style="width: 42%; height: 100%; background: #EF4444;"></div>
+                            </div>
+                            <p style="font-size: 0.85rem; color: var(--text-tertiary);">Takes too long to get to the point. Viewers will scroll before the 3-second mark.</p>
+                        </div>
+                        <!-- Mock metric 2 -->
+                        <div class="metric-card" style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span style="font-weight: 600;">Emotional Trigger</span>
+                                <span style="font-weight: 700; color: #10B981;">91/100</span>
+                            </div>
+                            <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; margin-bottom: 12px;">
+                                <div style="width: 91%; height: 100%; background: #10B981;"></div>
+                            </div>
+                            <p style="font-size: 0.85rem; color: var(--text-tertiary);">Excellent agitation of the problem. Viewers will feel the pain acutely.</p>
+                        </div>
+                        <!-- Mock metric 3 -->
+                        <div class="metric-card" style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span style="font-weight: 600;">Clarity</span>
+                                <span style="font-weight: 700; color: #F59E0B;">70/100</span>
+                            </div>
+                            <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; margin-bottom: 12px;">
+                                <div style="width: 70%; height: 100%; background: #F59E0B;"></div>
+                            </div>
+                            <p style="font-size: 0.85rem; color: var(--text-tertiary);">The transition to the solution is slightly muddled. Be more direct.</p>
+                        </div>
+                    </div>
+
+                    <!-- What works / what doesn't -->
+                    <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+                        <div style="flex: 1; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); padding: 16px; border-radius: var(--radius-md);">
+                            <h4 style="color: #10B981; margin-bottom: 8px; font-size: 0.9rem;"><ion-icon name="checkmark-circle"></ion-icon> Working</h4>
+                            <ul style="font-size: 0.85rem; color: var(--text-secondary); padding-left: 16px; margin: 0;">
+                                <li>Strong CTA sequence</li>
+                                <li>Clear value prop</li>
+                            </ul>
+                        </div>
+                        <div style="flex: 1; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); padding: 16px; border-radius: var(--radius-md);">
+                            <h4 style="color: #EF4444; margin-bottom: 8px; font-size: 0.9rem;"><ion-icon name="close-circle"></ion-icon> Weak</h4>
+                            <ul style="font-size: 0.85rem; color: var(--text-secondary); padding-left: 16px; margin: 0;">
+                                <li>Boring opening visual</li>
+                                <li>Lacks immediate urgency</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Rewrites -->
+                    <h3 style="margin-bottom: 12px;">Suggested Rewrite Hooks</h3>
+                    <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px;">
+                        <div class="feed-card" style="padding: 16px;">
+                            <p style="color: var(--text-primary); font-weight: 500;">"If your manual processing looks like this, you're literally burning money."</p>
+                        </div>
+                        <div class="feed-card" style="padding: 16px;">
+                            <p style="color: var(--text-primary); font-weight: 500;">"Watch me automate 10 hours of work in exactly 4 seconds."</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 12px; flex-direction: column;">
+                        <button class="btn-primary" data-navigate="view-quick" style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));"><ion-icon name="color-wand"></ion-icon> Generate Strategy using Script</button>
+                        <button class="btn-ghost"><ion-icon name="copy-outline"></ion-icon> Copy Full Report</button>
+                    </div>
+                </div>
+            </section>
+            <!-- VIEW: Guided Wizard -->
+            <section id="view-wizard" class="view form-view">
+                <div class="subheader scroll-sticky">
+                    <button class="back-btn interactive-hitbox" data-navigate="view-home"><ion-icon
+                            name="close"></ion-icon> Cancel</button>
+                    <div class="wizard-progress">
+                        <div class="fill" id="wizard-progress-fill"></div>
+                    </div>
+                    <span class="step-counter"><span id="wizard-step-num">1</span>/3</span>
+                </div>
+
+                <div class="form-container wizard-container">
+                    <div class="wizard-slider" id="wizard-slider">
+                        <!-- Step 1 -->
+                        <div class="wizard-step active" data-step="1">
+                            <h2>What are you promoting?</h2>
+                            <textarea id="w-product" rows="4"
+                                placeholder="Describe your app, product, or service..."></textarea>
+                            <div class="input-group mt-2">
+                                <label>Primary Goal</label>
+                                <div class="custom-select-wrapper">
+                                    <ion-icon name="analytics-outline" class="select-icon"></ion-icon>
+                                    <select id="w-goal">
+                                        <option>Drive Sales / Signups</option>
+                                        <option>Book a Demo</option>
+                                        <option>Brand Awareness</option>
+                                        <option>Generate Leads</option>
+                                    </select>
+                                    <ion-icon name="chevron-down" class="select-chevron"></ion-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="wizard-step" data-step="2">
+                            <h2>Which platforms?</h2>
+                            <div class="choice-chips massive-chips">
+                                <button class="chip active">TikTok</button>
+                                <button class="chip">Instagram</button>
+                                <button class="chip">YouTube</button>
+                                <button class="chip">LinkedIn</button>
+                            </div>
+                            <div class="input-group mt-2">
+                                <label>Target Audience</label>
+                                <input type="text" id="w-target-audience" placeholder="e.g. Graphic Designers">
+                            </div>
+                        </div>
+                        <!-- Step 3 (Brand) -->
+                        <div class="wizard-step" data-step="3">
+                            <h2 style="font-size:1.4rem;">Tell Claude About Your Brand</h2>
+                            <p class="subtitle" style="margin-top:-10px;">The more context you give, the more powerful your strategy becomes.</p>
+                            
+                            <div class="input-group mt-2">
+                                <label>Key Message</label>
+                                <input type="text" id="w-brand-message" placeholder="e.g. This tool saves you 10 hours a week">
+                            </div>
+                            
+                            <div class="input-group mt-2" id="w-benefits-group">
+                                <label>Core Benefits</label>
+                                <div class="benefit-inputs">
+                                    <input type="text" class="benefit-input mb-1" placeholder="Benefit 1...">
+                                </div>
+                                <button type="button" class="text-btn interactive-hitbox mt-1 add-benefit-btn" style="color: var(--accent-primary); text-align:left;">+ Add benefit</button>
+                            </div>
+                            
+                            <div class="input-group mt-2">
+                                <label>Main Pain Point</label>
+                                <input type="text" id="w-brand-pain" placeholder="e.g. Creators waste hours writing scripts with no strategy">
+                            </div>
+                            
+                            <div class="input-group mt-2">
+                                <label>Unique Selling Point (USP)</label>
+                                <input type="text" id="w-brand-usp" placeholder="e.g. The only tool built specifically for motion designers">
+                            </div>
+                            
+                            <div class="input-group mt-2">
+                                <label>Brand Tone</label>
+                                <div class="choice-chips brand-tones">
+                                    <button class="chip">Emotional</button><button class="chip">Aggressive</button><button class="chip">Funny</button><button class="chip">Premium</button><button class="chip">Inspirational</button><button class="chip">Educational</button><button class="chip">Urgent</button><button class="chip">Conversational</button><button class="chip">Bold</button><button class="chip">Luxury</button><button class="chip">Playful</button><button class="chip">Raw/Authentic</button>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group mt-2">
+                                <label>Competitor or Reference Brand <span class="label-hint">(Optional)</span></label>
+                                <input type="text" id="w-brand-competitor" placeholder="e.g. Apple, Notion, ClickFunnels">
+                            </div>
+                            
+                            <div class="input-group mt-2 mb-2">
+                                <label>Existing Customer Objections <span class="label-hint">(Optional)</span></label>
+                                <input type="text" id="w-brand-objections" placeholder="e.g. It's too expensive, I don't have time to learn a new tool">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wizard-controls">
+                        <button class="interactive-hitbox nav-btn" id="wiz-prev" disabled><ion-icon
+                                name="arrow-back"></ion-icon></button>
+                        <button class="btn-primary mega-btn interactive-hitbox" id="wiz-next">Next Step</button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- VIEW: Loading -->
+            <section id="view-loading" class="view flex-center loading-view overlay-view">
+                <div class="loading-state">
+                    <div class="spinner-ring"></div>
+                    <h3 class="pulsate" id="loading-msg">Analysing your inputs...</h3>
+                    <p class="loading-subtext" id="loading-sub">Initiating strategist core</p>
+                </div>
+            </section>
+
+            <!-- VIEW: Output Engine -->
+            <section id="view-output" class="view fullscreen-view">
+
+                <!-- Website Intelligence (Only visible if URL was analyzed) -->
+                <div id="output-web-intel" class="intel-banner" style="display: none;">
+                    <div class="intel-header">
+                        <ion-icon name="planet"></ion-icon> Website Intelligence Extracted
+                    </div>
+                    <div class="intel-stats" id="intel-content">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Swipeable Tab Header -->
+                <div class="tabs-header scroll-sticky">
+                    <button class="tab-btn active" data-tab="strategy">Overview</button>
+                    <button class="tab-btn" data-tab="hooks">Hooks</button>
+                    <button class="tab-btn" data-tab="script">Script</button>
+                    <button class="tab-btn" data-tab="visual">Visuals</button>
+                    <button class="tab-btn" data-tab="vars">Variations</button>
+                    <button class="close-output-btn interactive-hitbox" data-navigate="view-home"><ion-icon
+                            name="close"></ion-icon></button>
+                </div>
+
+                <!-- Tab Contents -->
+                <div class="tab-container" id="output-tab-container">
+
+                    <!-- TAB 1: Strategy -->
+                    <div class="tab-pane active" id="tab-strategy">
+                        <div class="output-card markdown-body" id="out-strategy-content">
+                            <!-- Populated randomly -->
+                        </div>
+                        <div class="output-actions">
+                            <button class="btn-ghost interactive-hitbox out-copy"><ion-icon
+                                    name="copy-outline"></ion-icon> Copy</button>
+                            <button class="btn-ghost interactive-hitbox out-regen"><ion-icon
+                                    name="refresh-outline"></ion-icon> Regenerate</button>
+                            <button class="btn-primary interactive-hitbox out-save"><ion-icon
+                                    name="bookmark-outline"></ion-icon> Save to Project</button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: Hooks -->
+                    <div class="tab-pane" id="tab-hooks">
+                        <div class="hooks-list" id="out-hooks-content">
+                            <!-- Cards -->
+                        </div>
+                        <div class="output-actions">
+                            <button class="btn-ghost interactive-hitbox out-regen"><ion-icon
+                                    name="refresh-outline"></ion-icon> Generate More</button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3: Script -->
+                    <div class="tab-pane" id="tab-script">
+                        <div class="script-timeline" id="out-script-content">
+                            <!-- Scene nodes -->
+                        </div>
+                        <div class="output-actions">
+                            <button class="btn-ghost interactive-hitbox out-copy"><ion-icon
+                                    name="copy-outline"></ion-icon> Copy Script</button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 4: Visual -->
+                    <div class="tab-pane" id="tab-visual">
+                        <div class="output-card markdown-body" id="out-visual-content">
+                            <!-- content -->
+                        </div>
+                    </div>
+
+                    <!-- TAB 5: Variations -->
+                    <div class="tab-pane" id="tab-vars">
+                        <div class="vars-list" id="out-vars-content">
+                            <!-- content -->
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- VIEW: Projects -->
+            <section id="view-projects" class="view list-view">
+                <div class="subheader scroll-sticky">
+                    <h2>Saved Projects</h2>
+                    <button class="icon-btn" id="btn-search-nav"><ion-icon name="search"></ion-icon></button>
+                </div>
+                <div class="search-bar-wrap" id="project-search-wrap" style="display:none;">
+                    <ion-icon name="search" class="search-icon"></ion-icon>
+                    <input type="text" id="project-search" placeholder="Search by name or goal...">
+                </div>
+
+                <div class="project-list" id="projects-container">
+                    <div class="empty-state">
+                        <div class="empty-icon glass-icon"><ion-icon name="file-tray-outline"></ion-icon></div>
+                        <p>No projects saved.</p>
+                        <button class="btn-primary" data-navigate="view-quick">Create Strategy</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW: Templates -->
+            <section id="view-templates" class="view list-view">
+                <div class="subheader scroll-sticky">
+                    <h2>Template Library</h2>
+                </div>
+                <div class="templates-grid" id="templates-container">
+                    <!-- Cards populated via JS -->
+                </div>
+            </section>
+
+
+
+            <!-- VIEW: Projects -->
+            <section id="view-projects" class="view list-view">
+                <div class="subheader scroll-sticky">
+                    <h2>My Projects</h2>
+                </div>
+                
+                <div id="project-list-wrapper" class="form-container">
+                    <!-- Dynamic Projects List or Empty State -->
+                </div>
+            </section>
+
+            <!-- VIEW: Settings -->
+            <section id="view-settings" class="view overlay-view list-view">
+                <div class="subheader scroll-sticky">
+                    <button class="back-btn interactive-hitbox" data-navigate="view-home"><ion-icon
+                            name="arrow-back"></ion-icon> Close</button>
+                    <h2>Settings</h2>
+                    <div style="width: 60px;"></div>
+                </div>
+
+                <div class="profile-card">
+                    <div class="avatar">C</div>
+                    <div class="info">
+                        <h3>Creator Profile</h3>
+                        <p id="prof-role">Content Creator</p>
+                    </div>
+                    <button class="text-btn">Edit</button>
+                </div>
+
+                <div class="settings-list">
+                    <div class="settings-group">
+                        <h4>Preferences</h4>
+                        <button class="setting-item"><span>Default Platform</span><span class="value"
+                                id="set-plat">TikTok</span></button>
+                        <button class="setting-item"><span>Default Tone</span><span
+                                class="value">Conversational</span></button>
+                        <button class="setting-item"><span>Default Goal</span><span class="value">Drive
+                                Sales</span></button>
+                    </div>
+                    <div class="settings-group">
+                        <h4>Data & Output</h4>
+                        <button class="setting-item"><span>Export History</span><ion-icon
+                                name="chevron-forward"></ion-icon></button>
+                        <button class="setting-item"><span>Clear Local Cache</span><ion-icon name="trash"
+                                class="danger"></ion-icon></button>
+                    </div>
+                    <div class="settings-group">
+                        <h4>About</h4>
+                        <button class="setting-item"><span>Help & Support</span><ion-icon
+                                name="help-circle"></ion-icon></button>
+                        <button class="setting-item center"><span class="subtext">App Version 1.0.0</span></button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav glass-effect">
+            <button class="nav-item active interactive-hitbox" data-navigate="view-home">
+                <ion-icon name="home"></ion-icon>
+                <span>Home</span>
+            </button>
+            <button class="nav-item interactive-hitbox" data-navigate="view-projects">
+                <ion-icon name="albums"></ion-icon>
+                <span>Projects</span>
+            </button>
+            <button class="nav-item interactive-hitbox" data-navigate="view-templates">
+                <ion-icon name="library"></ion-icon>
+                <span>Templates</span>
+            </button>
+        </nav>
+
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
